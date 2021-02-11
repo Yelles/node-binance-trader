@@ -379,7 +379,7 @@ socket.on("sell_signal", async (signal) => {
         return o.stratid == signal.stratid
     })
     if (tresult > -1) {
-        if (!trading_pairs[signal.pair + signal.stratid] && signal.new) {
+        if (env.TRADE_SHORT_ENABLED && !trading_pairs[signal.pair + signal.stratid] && signal.new) {
             console.log(
                 colors.grey(
                     "SELL_SIGNAL :: ENTER SHORT TRADE ::",

@@ -18,4 +18,6 @@ module.exports = envalid.cleanEnv(process.env, {
     TRADER_PORT: envalid.port({ default: 8003, desc: 'The port to trader webserver runs' }),
     STRATEGY_TIMEFRAME: envalid.str({default:'15m'}),
     VERSION: envalid.str({ default: pjson.version }),
+
+    TRADE_SHORT_ENABLED: envalid.bool({ default: false }),
 })
