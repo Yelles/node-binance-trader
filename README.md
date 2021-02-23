@@ -2,9 +2,11 @@
 
 <h6 align="center">Version 0.2.4</h6>
 
+[Our Setup Guide](https://github.com/jsappme/node-binance-trader/blob/master/BVA_Guide.pdf)
+
 [![Donate NIM](https://www.nimiq.com/accept-donations/img/donationBtnImg/light-blue-small.svg)](https://wallet.nimiq.com/nimiq:NQ38SDPGREC3USTALLCT87GQTCUYFH5L6PCQ)
 
-<img src="nbt_diagram.png">
+<img src="docs/images/nbt_diagram.png">
 
 <h4 align="center">NBT is an open cryptocurrency trading bot development framework for the Binance exchange.</h4>
 
@@ -16,7 +18,7 @@ NBT includes 3 main JS scripts:
   * to detect buy or sell signals
   * (optional) to send trading signals to the NBT Hub / [Bitcoin vs. Altcoins](https://bitcoinvsaltcoins.com) to monitor performances and auto trade those signals (virtually or for real).
 
-* the **trader**: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jsappme/nbt-binance-auto-trader)
+* the **trader**: [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/jsappme/node-binance-trader)
 
   * this script allows you to auto trade the signals received from the NBT hub or your own server. this script can run locally or on cloud services like Heroku. This new auto trader script allows you to trade with leverage when the pair is available for margin trading.
 
@@ -49,9 +51,14 @@ $EDITOR .env
 **Never check in your `.env` file!**
 It contains your most private information.
 
+**This project can be used as a Docker container!** Use the `docker run` commands below, after building the container:
+`docker build -t jsappme/node-binance-trader .`
+
 **To start the server** to save pair data, define strategies and emit trading signals:
 ```
 npm run start
+// or
+docker run -d --name node-binance-trader -v "$PWD/.env:/srv/app/.env" -p 4000:4000 jsappme/node-binance-trader npm run start
 ```
 
 **To start the auto trader** to monitor strategies and signals received from the server or the NBT Hub:
@@ -60,11 +67,15 @@ npm run start
 
 ```
 npm run trader
+// or
+docker run -d --name node-binance-trader -v "$PWD/.env:/srv/app/.env" jsappme/node-binance-trader npm run trader
 ```
 
 **To backtest** strategies using the data recorded by the server:
 ```
-npm run bt
+npm run backtest
+// or
+docker run -d --name node-binance-trader -v "$PWD/.env:/srv/app/.env" jsappme/node-binance-trader npm run backtest
 ```
 
 # Web Socket API specifications 📡
@@ -164,10 +175,16 @@ There are no warranties or guarantees expressed or implied.
 You assume all responsibility and liability.
 ```
 
-# Final Notes 🙏
+# Final Notes 
 
 Feel free to fork and add new pull request to this repo.
 If you have any questions/suggestions, or simply you need some help building your trading bot, or mining historical data or improving your strategies using the latest AI/ML algorithms, please feel free to <a href="mailto:herve76@gmail.com" target="_blank">contact me</a>.
+
+# Donate 🙏
+
+Become a patron, by simply clicking on this button (**very appreciated!**):
+
+[![](https://c5.patreon.com/external/logo/become_a_patron_button.png)](https://www.patreon.com/bePatron?u=4121661)
 
 If this repo helped you in any way, you can always leave me a BNB tip at 0xf0c499c0accddd52d2f96d8afb6778be0659ee0c
 
@@ -176,5 +193,5 @@ If this repo helped you in any way, you can always leave me a BNB tip at 0xf0c49
 * **Discord**: [Invite Link](https://discord.gg/4EQrEgj)
 
 <p align="center">
-  <a href="https://discord.gg/4EQrEgj"><img alt="Discord chat" src="Discord_button.png" /></a>
+  <a href="https://discord.gg/4EQrEgj"><img alt="Discord chat" src="docs/images/discord_button.png" /></a>
 </p>

@@ -3,7 +3,7 @@ const colors = require("colors")
 const _ = require("lodash")
 const moment = require("moment")
 const { Client } = require("pg")
-const env = require('./env')
+const env = require("./env")
 
 //////////////////////////////////////////////////////////////////////////////////
 
@@ -357,11 +357,11 @@ async function run() {
     console.log("Retrieving DB data...".green)
     const lines = await getData(test_pair)
     console.log("Running backtest... ".green + lines.length)
-    let startbt = Date.now()
+    let startBacktest = Date.now()
     console.log("starting backtest... ".green)
     await backtest(lines)
     console.log(
-        "Ending backtest... ".green + parseInt((Date.now() - startbt) / 1000)
+        "Ending backtest... ".green + parseInt((Date.now() - startBacktest) / 1000)
     )
 
     process.exit(0)
